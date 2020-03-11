@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div id="app">
+      <h1>{{header}}</h1>
+      <div class="add-item-form">
+        <input
+          type="text"
+          v-model="textValue"
+          @keyup.enter="tasks.push(textValue)"
+        />
+        <button v-on:click="save">+</button>
+      </div>
+      <ul>
+        <li v-for="(task,index) in tasks" v-bind:index="index" id="list">
+          <input type="checkbox" />{{task.label}}
+          <button v-on:click="remove">dell</button>
+          <button @click="changeActive">correction</button>
+          <template id="change" v-if="seen">
+            <input type="text" v-model="task.label" >
+            <button v-on:click="saveChanges(task)">save</button>
+          </template>
+        </li>
+      </ul>
+      <!-- <singleItem
+      ></singleItem> -->
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
